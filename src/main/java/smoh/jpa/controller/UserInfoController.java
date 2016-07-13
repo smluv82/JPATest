@@ -25,6 +25,14 @@ public class UserInfoController extends BaseController {
 	}
 
 	@ResponseBody
+	@RequestMapping(value="/users/querydsl")
+	public List<UserInfo> getUserListQueryDsl() {
+		UserInfo userInfoParam = new UserInfo();
+
+		return userInfoService.getUserListQueryDsl(userInfoParam);
+	}
+
+	@ResponseBody
 	@RequestMapping(value="/user/select")
 	public UserInfo getUserOneSelect() {
 		UserInfo userInfoParam = new UserInfo();
