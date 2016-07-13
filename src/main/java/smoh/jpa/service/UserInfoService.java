@@ -22,4 +22,12 @@ public class UserInfoService extends BaseService {
 
 		return userInfos;
 	}
+
+	public UserInfo getUserOneSelect(UserInfo userInfoParam) {
+		UserInfo userInfo = userInfoRepository.findByUserNoAndUserName(userInfoParam.getUserNo(), userInfoParam.getUserName());
+
+		logger.debug(userInfo.toString());
+
+		return userInfo;
+	}
 }

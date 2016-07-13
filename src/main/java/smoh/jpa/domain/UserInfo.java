@@ -22,6 +22,12 @@ public class UserInfo {
 	@Column(name="DEPT_NAME")
 	private String deptName;
 
+	@Column(name="USER_NO")
+	private String userNo;
+
+	@Column(name="USER_NAME")
+	private String userName;
+
 	public String getUserId() {
 		return userId;
 	}
@@ -46,8 +52,34 @@ public class UserInfo {
 		this.deptCode = deptCode;
 	}
 
+	public String getDeptName() {
+		return deptName;
+	}
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+
+	public String getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(String userNo) {
+		this.userNo = userNo;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	@Override
 	public String toString() {
-		return "UserInfo [userId=" + userId + ", userPass=" + userPass + ", deptCode=" + deptCode + "]";
+		return "UserInfo [userId=" + userId + ", userPass=" + userPass + ", deptCode=" + deptCode + ", deptName="
+				+ deptName + ", userNo=" + userNo + ", userName=" + userName + "]";
 	}
+
 }
