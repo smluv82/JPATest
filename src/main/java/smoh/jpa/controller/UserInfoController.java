@@ -7,14 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import smoh.jpa.base.BaseController;
 import smoh.jpa.domain.UserInfo;
 import smoh.jpa.repository.UserInfoRepository;
+import smoh.jpa.service.UserInfoService;
 
 @Controller
-public class SampleController {
-
-	@Autowired
-	private UserInfoRepository userInfoRepository;
+public class UserInfoController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping(value="/")
@@ -25,16 +24,11 @@ public class SampleController {
 	@ResponseBody
 	@RequestMapping(value="/users")
 	public List<UserInfo> getUserList() {
-		List<UserInfo> userInfos = userInfoRepository.findAll();
+		return userInfoService.getUserList();
+	}
 
-		for(UserInfo userInfo : userInfos) {
-			System.out.println(userInfo.toString());
-		}
-
-		UserInfo test1 = userInfoRepository.findOne("pCertPC1");
-
-		System.out.println(test1);
-
-		return userInfos;
+	@RequestMapping(value="/hello")
+	public void helloView() {
+		logger.debug("hello in");
 	}
 }
