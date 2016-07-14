@@ -46,20 +46,15 @@ public class UserInfoRepositoryImpl extends QueryDslRepositorySupport implements
 
 //		return query.from(qUserInfo).list(qUserInfo);
 //		return query.from(qUserInfo).offset(1).limit(2).list(qUserInfo);	//페이징
-
+		int page = 1;
+		int limit = 3;
+		int offset = (page-1)*limit;
 		List<UserInfo> userInfos =
 				query.from(qUserInfo)
-//				.where(qUserInfo.userId.like("%" + userInfo.getUserId() + "%")
-//						.and(qUserInfo.userName.like("%" + userInfo.getUserName() + "%"))
-//						.and(qUserInfo.userType.eq(userInfo.getUserType()))
-//						.and(qUserInfo.deptCode.eq(userInfo.getDeptCode()))
-//						.and(qUserInfo.useYn.eq(userInfo.getUseYn()))
-//						.and(qUserInfo.regDate.between(userInfo.getStartDate(), userInfo.getEndDate()))
-//						)
 				.where(builder)
 				.orderBy(qUserInfo.regDate.desc(), qUserInfo.userId.asc())
-				.offset(1)
-				.limit(20)
+				.offset(offset)
+				.limit(limit)
 				.list(qUserInfo);
 
 		return userInfos;
